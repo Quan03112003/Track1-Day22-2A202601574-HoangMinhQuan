@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Lê Quang Huy",
+    "student_id": "2A202601821",
+    "group_id": "B2",
+    "submitted_at": "2026-08-24T12:00:00+07:00"
+  },
+  "industry": "healthcare-assistant",
+  "product_context": {
+    "product_name": "TriageMate",
+    "product_stage": "discovery",
+    "problem_statement": "Người bệnh thường không biết triệu chứng của mình là tự chăm sóc tại nhà được, cần khám bác sĩ, hay phải đi cấp cứu ngay; việc phán đoán sai dẫn đến vừa quá tải phòng cấp cứu với ca nhẹ, vừa bỏ lỡ ca nặng cần can thiệp sớm.",
+    "target_users": ["người dân tự tra cứu triệu chứng", "điều dưỡng tổng đài tư vấn sức khỏe"],
+    "value_hypothesis": "Nếu cung cấp thông tin định hướng mức độ khẩn cấp dựa trên triệu chứng, người bệnh ra quyết định tìm đúng tuyến chăm sóc nhanh hơn; đo bằng tỉ lệ người dùng được định tuyến phù hợp so với đánh giá của bác sĩ.",
+    "in_scope": ["cung cấp thông tin định hướng mức độ khẩn cấp", "gợi ý tuyến chăm sóc phù hợp", "nhắc dấu hiệu nguy hiểm cần cấp cứu"],
+    "non_goals": ["không chẩn đoán bệnh", "không kê đơn hay chỉ định liều thuốc", "không thay thế đánh giá của nhân viên y tế"],
+    "user_journey_moment": "Khi người dùng vừa nhập xong mô tả triệu chứng và trước khi họ quyết định có đi khám hay không.",
+    "target_launch_or_review_date": "2026-12-15",
+    "automation_level": "decision-support",
+    "fallback_experience": "Khi AI không chắc chắn, gặp dấu hiệu nguy hiểm, hoặc hệ thống lỗi/bảo trì, sản phẩm dừng đưa gợi ý và hiển thị hướng dẫn liên hệ đường dây cấp cứu hoặc cơ sở y tế gần nhất kèm số điện thoại khẩn cấp.",
+    "decision_reversibility": "partially-reversible"
+  },
+  "system_profile": {
+    "purpose": "Cung cấp thông tin định hướng mức độ khẩn cấp và tuyến chăm sóc phù hợp dựa trên mô tả triệu chứng do người dùng nhập, ở giai đoạn thử nghiệm discovery.",
+    "user_groups": ["người dân tra cứu triệu chứng", "điều dưỡng tổng đài", "quản trị viên vận hành sản phẩm"],
+    "decision_impact": "Ảnh hưởng quyết định của người dùng về việc tự chăm sóc, đi khám hay gọi cấp cứu; gợi ý sai có thể làm chậm cấp cứu ca nặng hoặc gây lo lắng và khám thừa cho ca nhẹ.",
+    "data_types": ["mô tả triệu chứng tự thuật", "tuổi và giới tính", "tiền sử bệnh cơ bản người dùng tự khai"],
+    "deployment_context": "Ứng dụng web và mobile hướng tới người dùng cuối tại Việt Nam, giai đoạn discovery với nhóm thử nghiệm giới hạn và có giám sát của nhân viên y tế.",
+    "target_markets": ["Việt Nam"],
+    "system_boundary": {
+      "model": "Mô hình ngôn ngữ lớn của bên thứ ba, tinh chỉnh bằng prompt cho ngữ cảnh triage triệu chứng",
+      "application": "Giao diện chat hỏi-đáp triệu chứng, hiển thị mức khẩn cấp kèm cảnh báo giới hạn và nút liên hệ cấp cứu",
+      "people": ["người dùng cuối", "điều dưỡng giám sát", "bác sĩ cố vấn lâm sàng", "đội vận hành sản phẩm"],
+      "vendors": ["nhà cung cấp API mô hình ngôn ngữ", "nhà cung cấp hạ tầng cloud"],
+      "upstream_inputs": ["triệu chứng người dùng nhập", "dữ liệu tuổi/giới/tiền sử tự khai", "cơ sở tri thức y khoa dùng để tham chiếu"],
+      "downstream_decisions": ["người dùng quyết định tự chăm sóc / đi khám / gọi cấp cứu", "điều dưỡng ưu tiên gọi lại ca nghi nặng"]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 5,
+    "high_stakes": 5,
+    "sensitive_data": 4,
+    "affected_scale": 3,
+    "human_review_need": 5,
+    "rationale": "Sản phẩm chạm tới quyết định sức khỏe nên harm severity và high-stakes ở mức 5; dữ liệu triệu chứng và tiền sử là nhạy cảm nhưng chỉ ở mức tự khai nên chấm 4; affected scale ở mức 3 vì đang giai đoạn discovery với nhóm thử nghiệm giới hạn có giám sát; human review need ở mức 5 vì bối cảnh y tế đòi hỏi giám sát y tế có ý nghĩa. Điểm này chỉ dùng để triage rủi ro, không phải phân loại pháp lý."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Việt Nam chưa có khung pháp lý AI chuyên biệt tương đương EU nên cần rà soát quy định về khám chữa bệnh, thiết bị y tế và bảo vệ dữ liệu cá nhân trước khi triển khai sản phẩm chạm tới quyết định sức khỏe.",
+      "source_ids": ["SRC-03"]
+    },
+    "eu": {
+      "status": "high-risk",
+      "rationale": "Theo EU AI Act, hệ thống AI hỗ trợ quyết định trong bối cảnh y tế và an toàn nhiều khả năng bị xếp high-risk và phải tuân yêu cầu quản trị rủi ro, giám sát con người và minh bạch; cần luật sư xác nhận cho sản phẩm cụ thể.",
+      "source_ids": ["SRC-03"]
+    },
+    "other_markets": "not assessed",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Tỉ lệ người dùng được định tuyến phù hợp so với đánh giá bác sĩ đạt tối thiểu 85% trên bộ vignette thử nghiệm",
+    "risk_kri": "Tỉ lệ under-triage ca có dấu hiệu nguy hiểm duy trì dưới 1% mỗi chu kỳ review",
+    "guardrail_metric": "Giới hạn cứng là 0 ca có dấu hiệu nguy hiểm bị lưới an toàn bỏ qua và kết luận tự chăm sóc",
+    "review_cadence": "Review hàng tháng và review đột xuất khi có sự cố under-triage hoặc thay đổi mô hình hay nguồn dữ liệu"
+  },
+  "release_decision": {
+    "accountable_product_owner": "Trưởng nhóm sản phẩm lâm sàng",
+    "risk_acceptance_owner": "Giám đốc y khoa",
+    "independent_reviewer": "Bác sĩ cố vấn độc lập",
+    "decision": "research-only",
+    "release_blockers": ["GAP-01: lưới an toàn dấu hiệu nguy hiểm chưa được xây dựng và kiểm thử"],
+    "release_conditions": ["Hoàn tất và kiểm thử lưới an toàn dấu hiệu nguy hiểm theo GAP-01", "Có kết quả legal và privacy review trước khi mở rộng nhóm thử nghiệm"],
+    "next_review_trigger": "Cổng review discovery ngày 2026-12-15 hoặc khi có sự cố under-triage hoặc thay đổi mô hình và nguồn dữ liệu",
+    "residual_risk_rationale": "Ở giai đoạn discovery với nhóm thử nghiệm giới hạn và có giám sát y tế, rủi ro còn lại được kiểm soát nhưng under-triage vẫn nghiêm trọng nên chỉ chọn research-only cho đến khi lưới an toàn được kiểm thử."
+  }
+}
