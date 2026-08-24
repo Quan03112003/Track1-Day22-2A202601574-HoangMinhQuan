@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Dam Viet Cuong",
+    "student_id": "2A202601566",
+    "group_id": "B2",
+    "submitted_at": "2026-08-24T12:00:00Z"
+  },
+  "industry": "content-creator",
+  "product_context": {
+    "product_name": "CreatorPulse AI Studio",
+    "product_stage": "limited-production",
+    "problem_statement": "Content creator và team marketing tốn rất nhiều thời gian để viết bài đăng các kênh. Ngoài ra còn có rủi ro tạo ra nội dung quảng cáo sai sự thật hoặc vi phạm bản quyền mà không biết vì chưa có công cụ kiểm tra tự động.",
+    "target_users": [
+      "Content creator làm việc tự do",
+      "Team marketing doanh nghiệp nhỏ và vừa",
+      "Biên tập viên và copywriter ở agency"
+    ],
+    "value_hypothesis": "Giảm khoảng 60% thời gian viết bản nháp. Song song đó tự động gắn nhãn C2PA và chặn các nội dung quảng cáo sai sự thật.",
+    "in_scope": [
+      "Trợ lý AI giúp viết content cho mạng xã hội và blog",
+      "Tự động check giọng văn thương hiệu có nhất quán không và đối chiếu thông tin với tài liệu sản phẩm",
+      "Tự động gắn metadata C2PA và nhãn nội dung AI vào mọi file xuất ra"
+    ],
+    "non_goals": [
+      "Không tự động đăng bài lên mạng xã hội mà chưa qua người duyệt",
+      "Không tạo review giả hay nhận xét khách hàng ảo",
+      "Không clone giọng hay hình ảnh người khác khi chưa có giấy ủy quyền"
+    ],
+    "user_journey_moment": "Bước duyệt bản nháp trước khi xuất bản — biên tập viên kiểm tra nội dung có chính xác không và xác nhận đã gắn nhãn AI.",
+    "target_launch_or_review_date": "2026-09-30",
+    "automation_level": "recommendation",
+    "fallback_experience": "Nếu AI bị lỗi hoặc phát hiện nội dung có vấn đề thì hệ thống sẽ khóa luôn nút xuất file. Thay vào đó hiện mẫu văn bản chuẩn do người viết sẵn và chuyển bản nháp sang cho Trưởng ban Biên tập duyệt tay.",
+    "decision_reversibility": "partially-reversible"
+  },
+  "system_profile": {
+    "purpose": "Hỗ trợ content creator viết nội dung marketing nhiều kênh. Có chức năng kiểm tra brand voice và tự động gắn nhãn tuân thủ pháp lý.",
+    "user_groups": [
+      "Nhân viên content marketing",
+      "Giám đốc sáng tạo",
+      "Chủ shop online"
+    ],
+    "decision_impact": "Nội dung AI tạo ra ảnh hưởng trực tiếp đến quyết định mua hàng của người tiêu dùng và uy tín thương hiệu.",
+    "data_types": [
+      "Brief yêu cầu content từ khách hàng",
+      "Thông số sản phẩm từ nhãn hàng",
+      "Bộ brand guideline",
+      "Bản nháp text và hình do AI sinh ra"
+    ],
+    "deployment_context": "Chạy dưới dạng web app SaaS trên cloud. Tích hợp với CMS và kho tài sản số của doanh nghiệp.",
+    "target_markets": [
+      "Vietnam",
+      "European Union",
+      "United States"
+    ],
+    "system_boundary": {
+      "model": "LLM đa ngôn ngữ kết hợp RAG để đối chiếu dữ liệu và dịch vụ ký số C2PA",
+      "application": "Trình biên tập CreatorPulse Studio cùng pipeline gắn metadata và bộ lọc chính sách an toàn",
+      "people": [
+        "Content creator",
+        "Biên tập viên senior",
+        "Nhân viên quản trị tuân thủ"
+      ],
+      "vendors": [
+        "OpenAI API (model chính)",
+        "Anthropic Claude API (model dự phòng)",
+        "DigiMark C2PA (dịch vụ ký số metadata)"
+      ],
+      "upstream_inputs": [
+        "Prompt từ người dùng",
+        "Tài liệu brand guideline",
+        "Bảng thông số sản phẩm đã xác minh"
+      ],
+      "downstream_decisions": [
+        "Quyết định có xuất bản nội dung hay không",
+        "Phân phối chiến dịch quảng cáo đến người tiêu dùng",
+        "Các tuyên bố về tính năng sản phẩm"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 3,
+    "high_stakes": 3,
+    "sensitive_data": 2,
+    "affected_scale": 4,
+    "human_review_need": 4,
+    "rationale": "Ngành content creator ít có rủi ro gây thương tích trực tiếp nhưng nguy cơ lừa đảo người tiêu dùng lại rất cao. Nội dung số lan truyền nhanh đến hàng triệu người nên quy mô tác động lớn. Đặc biệt với các case deepfake giả mạo báo đài ở Việt Nam thì hậu quả tài chính rất nặng. Vì vậy bắt buộc phải có người duyệt trước khi xuất bản."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "limited-transparency",
+      "rationale": "Theo Luật AI Việt Nam và nghị định hướng dẫn thì hệ thống tạo nội dung thương mại bằng AI phải gắn nhãn nhận diện và metadata C2PA. Bộ TT&TT cũng đã xử phạt nhiều vụ deepfake quảng cáo giả.",
+      "source_ids": [
+        "SRC-01",
+        "SRC-04"
+      ]
+    },
+    "eu": {
+      "status": "limited-transparency",
+      "rationale": "Theo Điều 50 EU AI Act thì hệ thống AI tạo text và hình ảnh phải thông báo rõ cho người dùng. Tạo review giả cũng bị cấm theo luật bảo vệ người tiêu dùng EU.",
+      "source_ids": [
+        "SRC-03",
+        "SRC-06"
+      ]
+    },
+    "other_markets": "Ở Mỹ thì phải tuân thủ Mục 5 của FTC Act về chống quảng cáo lừa dối. Ngoài ra còn có USCO về bản quyền và ELVIS Act ở Tennessee về bảo vệ giọng nói.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Thời gian viết bản nháp giảm ít nhất 50%. Chỉ số hài lòng người dùng đạt trên 88%.",
+    "risk_kri": "Tỷ lệ file bị phản ánh sai thông tin hoặc thiếu nhãn AI phải dưới 0.2% tổng file xuất ra.",
+    "guardrail_metric": "Không được có bất kỳ file nào xuất ra mà thiếu nhãn C2PA hoặc chứa review giả lọt qua bộ lọc.",
+    "review_cadence": "Đánh giá an toàn mỗi 2 tuần theo sprint. Phải review lại ngay nếu đổi model hoặc có thay đổi luật."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Giám đốc Sản phẩm",
+    "risk_acceptance_owner": "Phó Chủ tịch phụ trách Rủi ro và An toàn Sản phẩm",
+    "independent_reviewer": "Trưởng ban Kiểm toán AI Độc lập",
+    "decision": "conditional-go",
+    "release_blockers": [
+      "GAP-01: Metadata C2PA và nhãn AI phải pass 100% bộ test trước khi ra mắt rộng.",
+      "GAP-02: Bộ lọc chặn nội dung mạo danh báo đài và review giả phải có biên bản kiểm toán độc lập."
+    ],
+    "release_conditions": [
+      "Chỉ cho thử nghiệm với 50 đối tác marketing đã xác minh và có gắn theo dõi telemetry.",
+      "Tính năng sản xuất video thương mại phải được cả Biên tập viên Senior lẫn Pháp chế cùng ký duyệt.",
+      "Phải chạy red-teaming hàng tuần trong suốt giai đoạn thử nghiệm."
+    ],
+    "next_review_trigger": "Review lại vào ngày 2026-09-30 hoặc ngay khi phát hiện sự cố lừa dối hoặc khi đổi model.",
+    "residual_risk_rationale": "Rủi ro còn lại ở mức chấp nhận được cho đợt thử nghiệm vì: tính năng tự đăng bài đã bị khóa cứng; bộ lọc chặn review giả đang hoạt động; và luôn có người duyệt trước khi xuất bản."
+  }
+}
