@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Hoang Minh Quan",
+    "student_id": "2A202601574",
+    "group_id": "B2",
+    "submitted_at": "2026-08-24T14:30:00+07:00"
+  },
+  "industry": "education-ai-tutor",
+  "product_context": {
+    "product_name": "AI Math Tutor",
+    "problem_statement": "Học sinh trung học thường gặp khó khăn trong việc hiểu và áp dụng các khái niệm toán học phức tạp, dẫn đến điểm số thấp và mất động lực học tập.",
+    "value_hypothesis": "Việc cung cấp lời giải thích từng bước và các ví dụ tương tác sẽ giúp học sinh nắm vững kiến thức, từ đó điểm trung bình môn Toán tăng từ 6.5 lên 8.0 sau 3 tháng sử dụng.",
+    "user_journey_moment": "Khi học sinh đang làm bài tập về nhà và gặp một bài toán khó, họ nhập câu hỏi vào hệ thống và AI sẽ phân tích, đưa ra các bước giải chi tiết kèm giải thích.",
+    "fallback_experience": "Nếu AI không đủ tự tin (điểm tin cậy < 80%), hệ thống sẽ không đưa ra câu trả lời, thay vào đó hiển thị thông báo rằng câu hỏi vượt quá khả năng hiện tại của AI và khuyến nghị học sinh hỏi giáo viên hoặc xem tài liệu hướng dẫn. Đồng thời hệ thống có thể gửi yêu cầu hỗ trợ đến giáo viên.",
+    "target_users": [
+      "học sinh lớp 10-12",
+      "giáo viên bộ môn"
+    ],
+    "in_scope": [
+      "giải thích bài toán",
+      "cung cấp ví dụ minh họa",
+      "gợi ý các bước giải",
+      "phân loại độ khó"
+    ],
+    "non_goals": [
+      "không làm thay bài tập",
+      "không chấm điểm",
+      "không thu thập thông tin cá nhân nhạy cảm",
+      "không đưa ra quyết định tuyển sinh"
+    ],
+    "product_stage": "pilot",
+    "automation_level": "decision-support",
+    "decision_reversibility": "partially-reversible",
+    "target_launch_or_review_date": "2026-09-30"
+  },
+  "system_profile": {
+    "purpose": "Hỗ trợ học sinh giải toán và hiểu sâu kiến thức thông qua hội thoại tự nhiên, với khả năng giải thích từng bước và đưa ra ví dụ tương tự.",
+    "user_groups": [
+      "học sinh trung học",
+      "giáo viên"
+    ],
+    "decision_impact": "Các gợi ý và lời giải của AI có thể ảnh hưởng đến cách học sinh tiếp cận vấn đề, từ đó tác động đến kết quả học tập và sự tự tin của học sinh.",
+    "data_types": [
+      "câu hỏi toán học nhập văn bản",
+      "phản hồi của học sinh (đúng/sai, đánh giá)",
+      "lịch sử tương tác"
+    ],
+    "deployment_context": "Ứng dụng web tích hợp vào cổng thông tin trường học, sử dụng trong giờ tự học và làm bài tập về nhà. Học sinh đăng nhập bằng tài khoản trường.",
+    "target_markets": [
+      "Việt Nam",
+      "các trường quốc tế tại Việt Nam"
+    ],
+    "system_boundary": {
+      "model": "GPT-4 API thông qua Azure OpenAI",
+      "application": "Frontend React, Backend Node.js, cơ sở dữ liệu PostgreSQL",
+      "people": [
+        "học sinh",
+        "giáo viên",
+        "quản trị viên hệ thống",
+        "chuyên gia giáo dục"
+      ],
+      "vendors": [
+        "Microsoft Azure"
+      ],
+      "upstream_inputs": [
+        "câu hỏi dạng văn bản",
+        "hình ảnh bài toán (OCR)",
+        "dữ liệu chương trình học"
+      ],
+      "downstream_decisions": [
+        "các bước giải được đề xuất",
+        "câu trả lời mẫu",
+        "phân loại mức độ khó",
+        "gợi ý bài tập tương tự"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 3,
+    "high_stakes": 3,
+    "sensitive_data": 2,
+    "affected_scale": 4,
+    "human_review_need": 4,
+    "rationale": "Hậu quả nghiêm trọng nhất là cung cấp thông tin sai dẫn đến học sinh hiểu sai kiến thức, ảnh hưởng điểm số nhưng không nguy hiểm tính mạng. Dữ liệu sản phẩm chủ yếu là câu hỏi, phản hồi và lịch sử tương tác; tuy nhiên tài khoản trường học vẫn có thể liên quan đến dữ liệu cá nhân. Quy mô tác động có thể lớn nếu triển khai cho nhiều học sinh. Cần giáo viên giám sát để đảm bảo chất lượng nội dung."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Theo các nguồn được sử dụng trong bài, chưa xác định đầy đủ nghĩa vụ pháp lý riêng cho AI tạo sinh hỗ trợ học tập. Cần tham vấn pháp lý để xác định yêu cầu về dữ liệu, nội dung, trách nhiệm và triển khai trong môi trường giáo dục.",
+      "source_ids": [
+        "SRC-01",
+        "SRC-02"
+      ]
+    },
+    "eu": {
+      "status": "low-risk",
+      "rationale": "Theo nguồn EU AI Act được sử dụng trong bài, hệ thống hỗ trợ giáo dục không được đánh giá học sinh hoặc quyết định cơ hội giáo dục không nhất thiết thuộc nhóm high-risk. Tuy nhiên vẫn cần xem xét nghĩa vụ minh bạch và các yêu cầu khác tùy cách triển khai.",
+      "source_ids": [
+        "SRC-03"
+      ]
+    },
+    "other_markets": "Chưa đánh giá chi tiết các thị trường khác; hiện tại phạm vi phân tích tập trung vào Việt Nam và tham chiếu Liên minh Châu Âu.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Tăng điểm trung bình môn Toán của học sinh sử dụng AI từ 6.5 lên 8.0 (thang 10) sau 3 tháng, đo qua điểm kiểm tra định kỳ.",
+    "risk_kri": "Tỷ lệ phản hồi không hiểu hoặc không chính xác được báo cáo bởi học sinh hoặc giáo viên trên tổng số tương tác, với ngưỡng cảnh báo ở mức trên 5% mỗi tuần.",
+    "guardrail_metric": "Tỷ lệ câu trả lời sai về kiến thức toán học cơ bản được giáo viên xác nhận phải được theo dõi riêng và không được vượt ngưỡng release đã phê duyệt.",
+    "review_cadence": "Đánh giá định kỳ hàng tháng và đánh giá đột xuất khi KRI vượt 5%, khi có cập nhật mô hình, thay đổi dữ liệu hoặc khi phát sinh khiếu nại nghiêm trọng."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Product Manager",
+    "risk_acceptance_owner": "Head of Education Product",
+    "independent_reviewer": "Phòng Pháp chế và Đảm bảo Chất lượng",
+    "decision": "conditional-go",
+    "release_blockers": [
+      "GAP-01",
+      "GAP-02"
+    ],
+    "release_conditions": [
+      "Hoàn thành tích hợp cơ chế human review cho các phản hồi có độ tin cậy dưới 85%.",
+      "Đạt độ chính xác tối thiểu 95% trên tập dữ liệu kiểm tra do giáo viên biên soạn.",
+      "Đào tạo giáo viên về cách sử dụng sản phẩm và quy trình xử lý lỗi."
+    ],
+    "next_review_trigger": "Ngày 2026-10-30 hoặc sớm hơn nếu KRI vượt 5% hoặc xuất hiện báo cáo lỗi nghiêm trọng từ người dùng.",
+    "residual_risk_rationale": "Rủi ro còn lại bao gồm khả năng AI đưa ra giải thích sai dù đã có cơ chế kiểm soát. Cơ chế fallback, giám sát của giáo viên và giới hạn phạm vi pilot giúp giảm tác động, nhưng chưa loại bỏ hoàn toàn rủi ro. Vì vậy sản phẩm chỉ nên conditional-go và phải đóng các release blocker trước khi mở rộng."
+  }
+}
